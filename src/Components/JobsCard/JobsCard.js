@@ -1,10 +1,11 @@
 import React from 'react'
 import { View, Text } from 'react-native';
 
-const JobsCard = () => {
+const JobsCard = ({jobData}) => {
+
 return (
     <View>
-        <Text>Hello Moto</Text>
+        <Text>{jobData.name}</Text>
     </View>
 )
 }
