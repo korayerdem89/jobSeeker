@@ -15,7 +15,7 @@ const JobsScreen = () => {
     <Stack.Navigator
       screenOptions={() => ({
         headerShown: true,
-
+        headerTintColor:"#ef5350"
       })}
     >
       <Stack.Screen
