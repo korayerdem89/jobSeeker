@@ -19,7 +19,7 @@ const Jobs = () => {
         <JobsCard jobData={item}/>
       )
     return (
-        <SafeAreaView>
+        <SafeAreaView style={styles.container}>
             <FlatList data={data.results} renderItem={renderJobs} />
         </SafeAreaView>
     );
