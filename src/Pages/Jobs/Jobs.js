@@ -4,7 +4,7 @@ import styles from './Jobs.style';
 import config from "../../../config";
 import useFetch from "../../hooks/useFetch/useFetch";
 import JobsCard from '../../Components/JobsCard/JobsCard';
-const Jobs = () => {
+const Jobs = ({navigation}) => {
     const { data, loading, error } = useFetch(`${config.API_JOBS_URL}`);
 
     if (loading) {
@@ -14,10 +14,15 @@ const Jobs = () => {
     if (error) {
         return <Text>{error}</Text>;
     }
+    
+    const handleSelect = id => {
+     navigation.navigate("DetailPage", id)
+    };
 
     const renderJobs = ({item}) => (
-        <JobsCard jobData={item}/>
+        <JobsCard jobData={item} onClick={() => handleSelect(item.id)} />
       )
+
     return (
         <SafeAreaView style={styles.container}>
             <FlatList data={data.results} renderItem={renderJobs} />
