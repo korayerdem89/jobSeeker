@@ -9,4 +9,10 @@ export default StyleSheet.create({
         backgroundColor:"#ef5350",
         borderRadius:5
     },
+    disabledButton: {
+        paddingVertical:8,
+        paddingHorizontal:40,
+        backgroundColor:"#e0e0e0",
+        borderRadius:5
+    },
 })
