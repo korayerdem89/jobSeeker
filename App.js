@@ -6,6 +6,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Jobs from "./src/Pages/Jobs/Jobs";
 import Detail from "./src/Pages/Detail/Detail"
 import Favorite from "./src/Pages/Favorite/Favorite"
+import FavoriteProvider from "./src/context/Provider";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -35,13 +36,14 @@ const JobsScreen = () => {
 
 const App = () => {
   return (
+    <FavoriteProvider>
     <NavigationContainer>
       <Drawer.Navigator  screenOptions={{headerShown:false}} initialRouteName="JobsScreen">
-        <Drawer.Screen  name="JobsScreen" component={JobsScreen} />
-        <Drawer.Screen name="FavoriteScreen" component={Favorite} />
+        <Drawer.Screen  name="Jobs" component={JobsScreen} />
+        <Drawer.Screen name="Favorite Jobs" component={Favorite} />
       </Drawer.Navigator>
-
     </NavigationContainer>
+    </FavoriteProvider>
   );
 };
 
