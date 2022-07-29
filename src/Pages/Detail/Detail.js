@@ -20,7 +20,7 @@ if (error) {
 
     return (
         <SafeAreaView>
-            <Text>hello</Text>
+            <Text>hello {data.contents}</Text>
         </SafeAreaView>
     );
 };
