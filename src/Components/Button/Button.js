@@ -4,8 +4,8 @@ import styles from './Button.style';
 const Button = ({ text, onSelect, disabled }) => {
 
     return (
-        <TouchableOpacity disabled={disabled} style={disabled ? styles.disabledButton : styles.button}>
-            <Text onPress={onSelect} style={{color:"white", fontWeight:"600", fontSize:16}}>{text}</Text>
+        <TouchableOpacity  onPress={onSelect}  disabled={disabled} style={disabled ? styles.disabledButton : styles.button}>
+            <Text style={{color:"white", fontWeight:"600", fontSize:16}}>{text}</Text>
         </TouchableOpacity>
     )
 }

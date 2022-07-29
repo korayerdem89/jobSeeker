@@ -13,6 +13,5 @@ export default StyleSheet.create({
    justifyContent:"space-around",
    marginTop:10,
    marginBottom:20
-
  } 
 })

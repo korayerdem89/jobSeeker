@@ -9,10 +9,9 @@ import Button from '../../Components/Button/Button';
 const Jobs = ({ navigation }) => {
 
     const [pageNumber, setPageNumber] = useState(0);
-    const { data, loading, error } = useFetch(`${config.API_JOBS_URL}?page=${pageNumber}`);
-
-console.log(pageNumber);
-    
+    const { data, loading, error } = useFetch(`${config.API_URL}?page=${pageNumber}`);
+ 
+   
 
     if (loading) {
         return <ActivityIndicator size="large" />
@@ -23,7 +22,7 @@ console.log(pageNumber);
     }
 
     const handleSelect = id => {
-        navigation.navigate("DetailPage", id)
+        navigation.navigate("DetailPage", {id});
     };
 
     const renderJobs = ({ item }) => (
