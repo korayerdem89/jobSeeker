@@ -7,6 +7,8 @@ import RenderHtml from 'react-native-render-html';
 import Button from '../../Components/Button/Button';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
+import {useDispatch} from 'react-redux';
+
 const Detail = ({ route }) => {
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
