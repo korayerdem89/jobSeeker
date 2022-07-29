@@ -1,13 +1,14 @@
 import React from 'react';
-import { SafeAreaView, Text, ActivityIndicator } from 'react-native';
+import {Text, ActivityIndicator, Dimensions, ScrollView, View  } from 'react-native';
 import styles from './Detail.style';
 import useFetch from "../../hooks/useFetch/useFetch";
 import config from "../../../config";
+import RenderHtml from 'react-native-render-html';
 
 const Detail = ({route}) => {
 const {id} = route.params;
 const { data, loading, error } = useFetch(config.API_URL+`/${id}`);
- console.log(data.type);
+ 
  
  if (loading) {
     return <ActivityIndicator size="large" />
@@ -17,11 +18,25 @@ if (error) {
     return <Text>{error}</Text>;
 }
 
-
+const source = {
+    html: `${data.contents}`
+  };
     return (
-        <SafeAreaView>
-            <Text>hello {data.contents}</Text>
-        </SafeAreaView>
+        <View style={styles.container}>
+ <View style={styles.header_container}>
+    <Text numberOfLines={1} style={{fontSize:17, marginRight:70, fontWeight:"bold"}} >{data.name}</Text>
+    <Text><Text style={{color:"#ef5350"}}>Locations:</Text> <Text>{data.locations[0].name}</Text></Text>
+    <Text><Text style={{color:"#ef5350"}}>Job Level:</Text> <Text> {data.levels[0].name}</Text></Text>
+    <Text style={{alignSelf:"center", fontWeight:"700", fontSize:16}}>Job Detail</Text>
+ </View>
+        <ScrollView>
+        <RenderHtml
+            baseStyle ={{ fontSize:14, backgroundColor:"white"}}
+            contentWidth={Dimensions.get('window').width}
+            source={source}
+          />
+      </ScrollView>
+      </View>
     );
 };
 
