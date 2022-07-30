@@ -8,12 +8,18 @@ import Button from '../../Components/Button/Button';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import {useDispatch} from 'react-redux';
+import {addFavorite} from '../../context/JobsSlice';
 
 const Detail = ({ route }) => {
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
+    const dispatch = useDispatch();
 
+    const handleFavoritedJobs= item => {
+        dispatch(addFavorite(item))
+    };
 
+    
     if (loading) {
         return <ActivityIndicator size="large" />
     }
@@ -25,6 +31,8 @@ const Detail = ({ route }) => {
     const source = {
         html: `${data.contents}`
     };
+  
+
     return (
         <View style={styles.container}>
             <View style={styles.header_container}>
@@ -42,7 +50,7 @@ const Detail = ({ route }) => {
             </ScrollView>
             <View style={styles.page_buttons}>
                 <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"}/>
-                <Button disabled={loading} onSelect={null} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
+                <Button disabled={loading} onSelect={() => handleFavoritedJobs(data)} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
             </View>
         </View>
     );

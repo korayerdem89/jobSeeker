@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import JobsCard from '../../Components/JobsCard';
 
 const FavoritedJobs = ({navigation}) => {
-  const jobItem = useSelector(state => state.favoritedItem);
+  const jobItem = useSelector(state => state.jobs.favoritedJobs);
 //   const dispatch = useDispatch();
   
   const handleToDetail = (id, name) => {

@@ -7,7 +7,7 @@ import Jobs from "./src/Pages/Jobs/Jobs";
 import Detail from "./src/Pages/Detail/Detail"
 import Favorite from "./src/Pages/Favorite/Favorite"
 import Provider from "./src/context/Provider";
-
+import { store } from "./src/context/store"; 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -36,7 +36,7 @@ const JobsScreen = () => {
 
 const App = () => {
   return (
-    <Provider>
+    <Provider store ={store}>
     <NavigationContainer>
       <Drawer.Navigator  screenOptions={{headerShown:false}} initialRouteName="JobsScreen">
         <Drawer.Screen  name="Jobs" component={JobsScreen} />
