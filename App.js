@@ -6,8 +6,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Jobs from "./src/Pages/Jobs/Jobs";
 import Detail from "./src/Pages/Detail/Detail"
 import Favorite from "./src/Pages/Favorite/Favorite"
-import Provider from "./src/context/Provider";
 import { store } from "./src/context/store"; 
+import {Provider} from 'react-redux'
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 

@@ -3,6 +3,6 @@ import jobsSlice from './JobsSlice';
 
 export const store= configureStore({
   reducer:{
-    jobsSlice: jobsSlice,
+    jobs: jobsSlice,
   }
 });

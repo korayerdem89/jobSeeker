@@ -15,11 +15,7 @@ const Detail = ({ route }) => {
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
     const dispatch = useDispatch();
 
-    const handleFavoritedJobs= item => {
-        dispatch(addFavorite(item))
-    };
-
-    
+  
     if (loading) {
         return <ActivityIndicator size="large" />
     }
@@ -50,7 +46,7 @@ const Detail = ({ route }) => {
             </ScrollView>
             <View style={styles.page_buttons}>
                 <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"}/>
-                <Button disabled={loading} onSelect={() => handleFavoritedJobs(data)} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
+                <Button disabled={loading} onSelect={() => dispatch(addFavorite(data))} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
             </View>
         </View>
     );

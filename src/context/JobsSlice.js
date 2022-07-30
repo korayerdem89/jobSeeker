@@ -20,5 +20,5 @@ export const jobsSlice=createSlice({
 
 
 
-export const {add_favorite} = jobsSlice.actions;
+export const {addFavorite} = jobsSlice.actions;
 export default jobsSlice.reducer;
