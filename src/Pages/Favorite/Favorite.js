@@ -8,13 +8,14 @@ import JobsCard from '../../Components/JobsCard';
 const FavoritedJobs = ({navigation}) => {
   const jobItem = useSelector(state => state.jobs.favoritedJobs);
 //   const dispatch = useDispatch();
-  
+ 
   const handleToDetail = (id, name) => {
     navigation.navigate('DetailPage', {id, name});
   };
   
-  const FavoritedItem = ({item}) => (
+  const favoritedItem = ({item}) => (
     <View style={styles.inner_container}>
+      <Text>FAVORİLERRR</Text>
       <JobsCard jobData={item} onClick={() => handleToDetail(item.id, item.name)} />
     </View>
   );
@@ -22,7 +23,7 @@ const FavoritedJobs = ({navigation}) => {
   return (
       <FlatList
       data={jobItem}
-      renderItem={FavoritedItem}
+      renderItem={favoritedItem}
       style={styles.container}
     />
 
