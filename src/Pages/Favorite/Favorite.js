@@ -1,12 +1,12 @@
 import React from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import styles from './Favorite.style'; 
 import Button from '../../Components/Button/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import JobsCard from '../../Components/JobsCard';
 
 const FavoritedJobs = ({navigation}) => {
-  const job = useSelector(state => state.favoritedItem);
+  const jobData = useSelector(state => state.favoritedItem);
 //   const dispatch = useDispatch();
   
   const handleToDetail = (id, name) => {
@@ -20,11 +20,15 @@ const FavoritedJobs = ({navigation}) => {
   );
 
   return (
-    <FlatList
-      data={job}
+    <View style={{flex:1, backgroundColor:"white"}}>
+      <Text>Hello</Text>
+      <FlatList
+      data={jobData}
       renderItem={FavoritedItem}
       style={styles.container}
     />
+    </View>
+
   );
 };
 
