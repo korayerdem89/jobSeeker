@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import JobsCard from '../../Components/JobsCard';
 
 const FavoritedJobs = ({navigation}) => {
-  const jobData = useSelector(state => state.favoritedItem);
+  const jobItem = useSelector(state => state.favoritedItem);
 //   const dispatch = useDispatch();
   
   const handleToDetail = (id, name) => {
@@ -20,14 +20,11 @@ const FavoritedJobs = ({navigation}) => {
   );
 
   return (
-    <View style={{flex:1, backgroundColor:"white"}}>
-      <Text>Hello</Text>
       <FlatList
-      data={jobData}
+      data={jobItem}
       renderItem={FavoritedItem}
       style={styles.container}
     />
-    </View>
 
   );
 };

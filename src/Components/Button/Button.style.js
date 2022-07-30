@@ -10,7 +10,8 @@ export default StyleSheet.create({
         borderRadius:5,
         flexDirection:"row",
         alignItems:"center",
-        width:deviceSize.width / 2.3
+        width:deviceSize.width / 2.3,
+        justifyContent:"center"
     },
     disabledButton: {
         paddingVertical:8,
@@ -19,5 +20,6 @@ export default StyleSheet.create({
         borderRadius:5,
         flexDirection:"row",
         alignItems:"center",
+        justifyContent:"center"
     },
 })
