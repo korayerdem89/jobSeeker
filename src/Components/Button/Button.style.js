@@ -23,4 +23,14 @@ export default StyleSheet.create({
         width:deviceSize.width / 2.3,
         justifyContent:"center"
     },
+    favoritedButton: {
+        paddingVertical:8,
+        paddingHorizontal:30,
+        backgroundColor:"#FFD700",
+        borderRadius:5,
+        flexDirection:"row",
+        alignItems:"center",
+        width:deviceSize.width / 2.3,
+        justifyContent:"center"
+    },
 })
