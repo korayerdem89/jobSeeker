@@ -62,7 +62,7 @@ const Detail = ({ route }) => {
             </ScrollView>
             <View style={styles.page_buttons}>
                 <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"} />
-                <Button favorited disabled={loading || favorited} onSelect={() => handleFavoriteJob(data)} text={<MaterialIcons name={favorited ? "favorite" : "favorite-border"} size={14} color="white" />} text2={"Favorite Jobs"} />
+                <Button favorited disabled={loading || favorited} onSelect={() => handleFavoriteJob(data)} text={<MaterialIcons name={favorited ? "favorite" : "favorite-border"} size={14} color="white" />} text2={favorited ? "FAVORITED" : "Favorite Job"} />
             </View>
         </View>
     );
