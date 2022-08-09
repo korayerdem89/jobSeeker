@@ -1,10 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+
+const deviceSize = Dimensions.get('window') 
 
 export default StyleSheet.create({
   container: { flex: 1, 
     backgroundColor: "rgba(50,170,255,0.1)", 
-    padding: 10,
-    paddingTop:50 
+    padding: 5,
+    paddingTop:50,
   },
   inner_container: {
     marginBottom: 10,
@@ -16,12 +18,15 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
   favHeader:{
-    alignSelf:"center",
     fontSize:20,
-    color:"#ef5350",
+    color:"white",
     fontWeight:"bold",
-    marginBottom:20
-
+    marginBottom:20,
+    backgroundColor:"#ef5350",
+    padding:5,
+    width:deviceSize.width,
+    alignSelf:"center",
+    textAlign:"center"
   },
   delete_item:{
     padding:2,

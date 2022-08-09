@@ -25,7 +25,7 @@ const FavoritedJobs = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.favHeader}>Favorite Jobs</Text>
+      <Text style={styles.favHeader}>FAVORITES</Text>
       <FlatList
         data={jobItem}
         renderItem={favoritedItem}
