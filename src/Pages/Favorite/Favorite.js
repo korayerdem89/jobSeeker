@@ -1,7 +1,6 @@
 import React from 'react';
-import { FlatList, View, Text, TouchableOpacity } from 'react-native';
+import { FlatList, View, Text } from 'react-native';
 import styles from './Favorite.style';
-import Button from '../../Components/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import JobsCard from '../../Components/JobsCard';
 import { removeJob } from '../../context/JobsSlice';

@@ -13,8 +13,8 @@ export const jobsSlice=createSlice({
       return {...state, favoritedJobs:favList}
     },
     removeJob:(state,action)=>{
-      const job=action.payload;
-      const newArr=state.favoritedJobs.filter(item=> item.id !== job.id);
+      const id=action.payload;
+      const newArr=state.favoritedJobs.filter(item=> item.id !== id);
       return {...state, favoritedJobs:newArr}
     },
   }
