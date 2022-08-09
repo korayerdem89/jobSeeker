@@ -1,11 +1,11 @@
 import React from 'react'
-import { View, Text, TouchableWithoutFeedback } from 'react-native';
+import { View, Text, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import styles from './JobsCard.style';
-const JobsCard = ({ jobData, onClick }) => {
+const JobsCard = ({ jobData, onClick, removeButton }) => {
 
     return (
         <TouchableWithoutFeedback onPress={onClick} >
-            <View style={styles.container}>
+            <View style={removeButton ? styles.remove_container : styles.container}>
             <Text style={{fontWeight:"bold", fontSize:16}} numberOfLines={1}>{jobData.name}</Text>
             <Text style={{fontSize:15}}>{jobData.company.name}</Text>
             <View style={styles.locationItem}>
