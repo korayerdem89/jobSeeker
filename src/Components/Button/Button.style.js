@@ -15,11 +15,12 @@ export default StyleSheet.create({
     },
     disabledButton: {
         paddingVertical:8,
-        paddingHorizontal:40,
+        paddingHorizontal:30,
         backgroundColor:"#e0e0e0",
         borderRadius:5,
         flexDirection:"row",
         alignItems:"center",
+        width:deviceSize.width / 2.3,
         justifyContent:"center"
     },
 })
