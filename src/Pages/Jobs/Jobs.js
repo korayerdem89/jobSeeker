@@ -39,7 +39,7 @@ const Jobs = ({ navigation }) => {
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList data={data.results} renderItem={renderJobs} />
+            <FlatList data={data.results} renderItem={renderJobs}/>
             <View style={styles.page_buttons}>
                 {pageNumber >0 && <Button disabled={loading} onSelect={previousPage} text={"<< Geri"} /> }
                 <Button disabled={loading} onSelect={nextPage} text={"İleri >>"} />

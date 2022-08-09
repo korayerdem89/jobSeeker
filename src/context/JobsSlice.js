@@ -6,21 +6,21 @@ export const jobsSlice=createSlice({
     favoritedJobs:[]
   },
   reducers:{
-    addFavorite:(state,actions)=>{
+    addFavorite:(state,action)=>{
       let favList = [];
-      const item =actions.payload;
+      const item =action.payload;
       favList =[...state.favoritedJobs, item];
       return {...state, favoritedJobs:favList}
     },
-    // removeJob:(state,actions)=>{
-    //   const {job}=actions.payload;
-    //   const newArr=state.favoriteJobs.filter(item=> item.id!==job.id);
-    //   state.favoriteJobs=newArr;
-    // },
+    removeJob:(state,action)=>{
+      const job=action.payload;
+      const newArr=state.favoritedJobs.filter(item=> item.id !== job.id);
+      return {...state, favoritedJobs:newArr}
+    },
   }
 });
 
 
 
-export const {addFavorite} = jobsSlice.actions;
+export const {addFavorite, removeJob} = jobsSlice.actions;
 export default jobsSlice.reducer;

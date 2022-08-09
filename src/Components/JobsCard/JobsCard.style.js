@@ -8,7 +8,8 @@ export default StyleSheet.create({
         marginHorizontal:8,
         borderRadius:5,
         padding:5,
-        flex:1
+        flex:1,
+        marginBottom:10
     },
     remove_container:{
         backgroundColor:"white",
