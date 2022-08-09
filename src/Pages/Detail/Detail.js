@@ -11,9 +11,11 @@ import {useDispatch} from 'react-redux';
 import {addFavorite} from '../../context/JobsSlice';
 
 const Detail = ({ route }) => {
+ 
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
     const dispatch = useDispatch();
+ 
 
   
     if (loading) {
@@ -28,6 +30,9 @@ const Detail = ({ route }) => {
         html: `${data.contents}`
     };
   
+    const handleFavoriteJob = jobData => {
+        dispatch(addFavorite(jobData));
+    } 
 
     return (
         <View style={styles.container}>
@@ -46,7 +51,7 @@ const Detail = ({ route }) => {
             </ScrollView>
             <View style={styles.page_buttons}>
                 <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"}/>
-                <Button disabled={loading} onSelect={() => dispatch(addFavorite(data))} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
+                <Button disabled={loading} onSelect={() =>handleFavoriteJob(data)} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
             </View>
         </View>
     );

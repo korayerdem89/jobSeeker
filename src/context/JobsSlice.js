@@ -7,8 +7,10 @@ export const jobsSlice=createSlice({
   },
   reducers:{
     addFavorite:(state,actions)=>{
-      const {item}=actions.payload;
-      state.favoritedJobs.push(item);
+      let favList = [];
+      const item =actions.payload;
+      favList =[...state.favoritedJobs, item];
+      return {...state, favoritedJobs:favList}
     },
     // removeJob:(state,actions)=>{
     //   const {job}=actions.payload;

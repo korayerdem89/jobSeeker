@@ -5,10 +5,11 @@ import Button from '../../Components/Button/Button';
 import {useDispatch, useSelector} from 'react-redux';
 import JobsCard from '../../Components/JobsCard';
 
+
 const FavoritedJobs = ({navigation}) => {
   const jobItem = useSelector(state => state.jobs.favoritedJobs);
 //   const dispatch = useDispatch();
- 
+
   const handleToDetail = (id, name) => {
     navigation.navigate('DetailPage', {id, name});
   };
@@ -26,7 +27,7 @@ const FavoritedJobs = ({navigation}) => {
       renderItem={favoritedItem}
       style={styles.container}
     />
-
+ 
   );
 };
 
