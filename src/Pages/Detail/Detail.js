@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Text, ActivityIndicator, Dimensions, ScrollView, View } from 'react-native';
 import styles from './Detail.style';
 import useFetch from "../../hooks/useFetch/useFetch";
@@ -7,17 +7,27 @@ import RenderHtml from 'react-native-render-html';
 import Button from '../../Components/Button/Button';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-import {useDispatch} from 'react-redux';
-import {addFavorite} from '../../context/JobsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite } from '../../context/JobsSlice';
 
 const Detail = ({ route }) => {
- 
+    const favorites = useSelector(state => state.jobs.favoritedJobs);
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
+    const [favorited, setFavorited] = useState(false);
     const dispatch = useDispatch();
  
+    useEffect(() => {
+        if(!loading) {
+            const favoritedIds = favorites.map(item => item.id.toString());
+            const isFavorited = favoritedIds.includes(data.id.toString());
+            console.log(isFavorited);
+            if (isFavorited) {
+                setFavorited(true);
+            }
+        }
+    }, [loading])
 
-  
     if (loading) {
         return <ActivityIndicator size="large" />
     }
@@ -29,10 +39,11 @@ const Detail = ({ route }) => {
     const source = {
         html: `${data.contents}`
     };
-  
+
     const handleFavoriteJob = jobData => {
         dispatch(addFavorite(jobData));
-    } 
+        setFavorited(true);
+    }
 
     return (
         <View style={styles.container}>
@@ -44,14 +55,14 @@ const Detail = ({ route }) => {
             </View>
             <ScrollView>
                 <RenderHtml
-                    baseStyle={{ fontSize: 14, backgroundColor: "white", paddingHorizontal:10 }}
+                    baseStyle={{ fontSize: 14, backgroundColor: "white", paddingHorizontal: 10 }}
                     contentWidth={Dimensions.get('window').width}
                     source={source}
                 />
             </ScrollView>
             <View style={styles.page_buttons}>
-                <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"}/>
-                <Button disabled={loading} onSelect={() =>handleFavoriteJob(data)} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
+                <Button disabled={loading} onSelect={null} text={<MaterialCommunityIcons name="login" size={14} color="white" />} text2={"Submit"} />
+                <Button disabled={loading || favorited} onSelect={() => handleFavoriteJob(data)} text={<MaterialIcons name="favorite" size={14} color="white" />} text2={"Favorite Jobs"} />
             </View>
         </View>
     );
