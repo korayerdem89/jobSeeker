@@ -44,7 +44,7 @@ const Detail = ({ route }) => {
             </View>
             <ScrollView>
                 <RenderHtml
-                    baseStyle={{ fontSize: 14, backgroundColor: "white" }}
+                    baseStyle={{ fontSize: 14, backgroundColor: "white", paddingHorizontal:10 }}
                     contentWidth={Dimensions.get('window').width}
                     source={source}
                 />
