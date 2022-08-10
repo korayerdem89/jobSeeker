@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Text, ActivityIndicator, Dimensions, ScrollView, View } from 'react-native';
+import { Text, ActivityIndicator, Dimensions, ScrollView, View, Alert } from 'react-native';
 import styles from './Detail.style';
 import useFetch from "../../hooks/useFetch/useFetch";
 import config from "../../../config";
@@ -15,6 +15,7 @@ const Detail = ({ route }) => {
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
     const [favorited, setFavorited] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
     const dispatch = useDispatch();
  
     useEffect(() => {
@@ -44,6 +45,10 @@ const Detail = ({ route }) => {
         dispatch(addFavorite(jobData));
         setFavorited(true);
     }
+    const handleSubmit = () => {
+        setSubmitted(true);
+        Alert.alert("You Submitted For this Job")
+    }
 
     return (
         <View style={styles.container}>
@@ -61,7 +66,7 @@ const Detail = ({ route }) => {
                 />
             </ScrollView>
             <View style={styles.page_buttons}>
-                <Button disabled={loading} onSelect={null} text2={"login"} text={"Submit"} />
+                <Button disabled={loading || submitted} onSelect={handleSubmit} text2={"login"} text={"Submit"} />
                 <Button favorited disabled={loading || favorited} onSelect={() => handleFavoriteJob(data)} text2={favorited ? "favorite" : "favorite-border"} text={favorited ? "FAVORITED" : "Favorite Job"} />
             </View>
         </View>
