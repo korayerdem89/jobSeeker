@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, ActivityIndicator, Dimensions, ScrollView, View, Alert } from 'react-native';
 import styles from './Detail.style';
 import useFetch from "../../hooks/useFetch/useFetch";
@@ -17,9 +17,9 @@ const Detail = ({ route }) => {
     const [favorited, setFavorited] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const dispatch = useDispatch();
- 
+
     useEffect(() => {
-        if(!loading) {
+        if (!loading) {
             const favoritedIds = favorites.map(item => item.id.toString());
             const isFavorited = favoritedIds.includes(data.id.toString());
             console.log(isFavorited);

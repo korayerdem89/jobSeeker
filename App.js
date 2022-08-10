@@ -6,8 +6,8 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Jobs from "./src/Pages/Jobs/Jobs";
 import Detail from "./src/Pages/Detail/Detail"
 import Favorite from "./src/Pages/Favorite/Favorite"
-import { store } from "./src/context/store"; 
-import {Provider} from 'react-redux'
+import { store } from "./src/context/store";
+import { Provider } from 'react-redux'
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -16,7 +16,7 @@ const JobsScreen = () => {
     <Stack.Navigator
       screenOptions={() => ({
         headerShown: true,
-        headerTintColor:"#ef5350"
+        headerTintColor: "#ef5350"
       })}
     >
       <Stack.Screen
@@ -36,13 +36,13 @@ const JobsScreen = () => {
 
 const App = () => {
   return (
-    <Provider store ={store}>
-    <NavigationContainer>
-      <Drawer.Navigator  screenOptions={{headerShown:false}} initialRouteName="JobsScreen">
-        <Drawer.Screen  name="Jobs" component={JobsScreen} />
-        <Drawer.Screen name="Favorite Jobs" component={Favorite} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Drawer.Navigator screenOptions={{ headerShown: false }} initialRouteName="JobsScreen">
+          <Drawer.Screen name="Jobs" component={JobsScreen} />
+          <Drawer.Screen name="Favorite Jobs" component={Favorite} />
+        </Drawer.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 };

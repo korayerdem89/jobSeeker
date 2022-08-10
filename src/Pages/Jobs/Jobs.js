@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, Text, ActivityIndicator, FlatList, View, TouchableOpacity } from 'react-native';
 import styles from './Jobs.style';
 import config from "../../../config";
@@ -10,8 +10,8 @@ const Jobs = ({ navigation }) => {
 
     const [pageNumber, setPageNumber] = useState(0);
     const { data, loading, error } = useFetch(`${config.API_URL}?page=${pageNumber}`);
- 
-   
+
+
 
     if (loading) {
         return <ActivityIndicator size="large" />
@@ -22,7 +22,7 @@ const Jobs = ({ navigation }) => {
     }
 
     const handleSelect = id => {
-        navigation.navigate("DetailPage", {id});
+        navigation.navigate("DetailPage", { id });
     };
 
     const renderJobs = ({ item }) => (
@@ -30,18 +30,18 @@ const Jobs = ({ navigation }) => {
     )
 
     const nextPage = () => {
-       setPageNumber(pageNumber+1)
+        setPageNumber(pageNumber + 1)
     }
 
     const previousPage = () => {
-        setPageNumber(pageNumber-1)
+        setPageNumber(pageNumber - 1)
     }
 
     return (
         <SafeAreaView style={styles.container}>
-            <FlatList data={data.results} renderItem={renderJobs}/>
+            <FlatList data={data.results} renderItem={renderJobs} />
             <View style={styles.page_buttons}>
-                {pageNumber >0 && <Button disabled={loading} onSelect={previousPage} text={"<< Geri"} /> }
+                {pageNumber > 0 && <Button disabled={loading} onSelect={previousPage} text={"<< Geri"} />}
                 <Button disabled={loading} onSelect={nextPage} text={"İleri >>"} />
             </View>
         </SafeAreaView>

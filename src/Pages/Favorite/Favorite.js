@@ -7,7 +7,7 @@ import { removeJob } from '../../context/JobsSlice';
 
 const FavoritedJobs = ({ navigation }) => {
   const jobItem = useSelector(state => state.jobs.favoritedJobs);
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleToDetail = (id, name) => {
     navigation.navigate('DetailPage', { id, name });
@@ -16,10 +16,10 @@ const FavoritedJobs = ({ navigation }) => {
   const removeItem = id => {
     dispatch(removeJob(id));
   };
- 
+
   const favoritedItem = ({ item }) => (
     <View style={styles.inner_container}>
-      <JobsCard removeButton jobData={item} onClick={() => handleToDetail(item.id, item.name)} onRemove = {() => removeItem(item.id)}/>
+      <JobsCard removeButton jobData={item} onClick={() => handleToDetail(item.id, item.name)} onRemove={() => removeItem(item.id)} />
     </View>
   );
 
