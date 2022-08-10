@@ -18,7 +18,7 @@ const useFetch = (url, pageNumber) => {
 
         }
     };
-console.log(`useEffect ${pageNumber}`);
+ 
 if (pageNumber) {
     useEffect(() => {
         fetchData();

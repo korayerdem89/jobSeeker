@@ -10,7 +10,7 @@ import { nextPage, previousPage } from '../../context/JobsSlice';
 const Jobs = ({ navigation }) => {
     const page = useSelector(state => state.jobs.pageNumber);
     const [pageNumber, setPageNumber] = useState(page);
-    console.log(page);
+ 
     const { data, loading, error } = useFetch(`${config.API_URL}?page=${pageNumber}`, pageNumber);
     const dispatch = useDispatch();
     if (loading) {
