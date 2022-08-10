@@ -35,7 +35,7 @@ export const jobsSlice = createSlice({
       return { ...state, pageNumber: increasePage };
     },
     previousPage: (state, action) => {
-      let decreasePage = state.pageNumber - 1;
+      let decreasePage = state.pageNumber - 1; //sayfa 0'a gelince geri tuşunu kaldırdığımdan, nextPage'de olduğu gibi koşul belirtmeme gerek yok"
       return { ...state, pageNumber: decreasePage };
     },
 
