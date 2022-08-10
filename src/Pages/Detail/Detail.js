@@ -5,13 +5,12 @@ import useFetch from "../../hooks/useFetch/useFetch";
 import config from "../../../config";
 import RenderHtml from 'react-native-render-html';
 import Button from '../../Components/Button/Button';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { MaterialIcons } from '@expo/vector-icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { addFavorite } from '../../context/JobsSlice';
+import { addFavorite, addSubmitted } from '../../context/JobsSlice';
 
 const Detail = ({ route }) => {
     const favorites = useSelector(state => state.jobs.favoritedJobs);
+    const submits = useSelector(state => state.jobs.submittedJobs);
     const { id } = route.params;
     const { data, loading, error } = useFetch(config.API_URL + `/${id}`);
     const [favorited, setFavorited] = useState(false);
@@ -22,10 +21,14 @@ const Detail = ({ route }) => {
         if (!loading) {
             const favoritedIds = favorites.map(item => item.id.toString());
             const isFavorited = favoritedIds.includes(data.id.toString());
-            console.log(isFavorited);
+            const submittedIds = submits.map(item => item.id.toString());
+            const isSubmitted = submittedIds.includes(data.id.toString());
             if (isFavorited) {
                 setFavorited(true);
+            } else if (isSubmitted) {
+                setSubmitted(true);
             }
+
         }
     }, [loading])
 
@@ -45,7 +48,8 @@ const Detail = ({ route }) => {
         dispatch(addFavorite(jobData));
         setFavorited(true);
     }
-    const handleSubmit = () => {
+    const handleSubmit = jobData => {
+        dispatch(addSubmitted(jobData));
         setSubmitted(true);
         Alert.alert("You Submitted For this Job")
     }
@@ -66,7 +70,7 @@ const Detail = ({ route }) => {
                 />
             </ScrollView>
             <View style={styles.page_buttons}>
-                <Button disabled={loading || submitted} onSelect={handleSubmit} text2={"login"} text={"Submit"} />
+                <Button disabled={loading || submitted} onSelect={() => handleSubmit(data)} text2={"login"} text={"Submit"} />
                 <Button favorited disabled={loading || favorited} onSelect={() => handleFavoriteJob(data)} text2={favorited ? "favorite" : "favorite-border"} text={favorited ? "FAVORITED" : "Favorite Job"} />
             </View>
         </View>

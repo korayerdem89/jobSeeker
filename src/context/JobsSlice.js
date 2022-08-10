@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const jobsSlice=createSlice({
   name:'jobs',
   initialState:{
-    favoritedJobs:[]
+    favoritedJobs:[],
+    submittedJobs:[],
   },
   reducers:{
     addFavorite:(state,action)=>{
@@ -11,6 +12,12 @@ export const jobsSlice=createSlice({
       const item =action.payload;
       favList =[...state.favoritedJobs, item];
       return {...state, favoritedJobs:favList}
+    },
+    addSubmitted:(state,action)=>{
+      let submitList = [];
+      const item =action.payload;
+      submitList = [...state.submittedJobs, item];
+      return {...state, submittedJobs:submitList}
     },
     removeJob:(state,action)=>{
       const id=action.payload;
@@ -22,5 +29,5 @@ export const jobsSlice=createSlice({
 
 
 
-export const {addFavorite, removeJob} = jobsSlice.actions;
+export const {addFavorite, removeJob, addSubmitted} = jobsSlice.actions;
 export default jobsSlice.reducer;
