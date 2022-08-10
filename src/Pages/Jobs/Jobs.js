@@ -30,21 +30,13 @@ const Jobs = ({ navigation }) => {
     )
 
     const handleNextPage = () => {
-        dispatch(nextPage());
-        if (page === 4) {
-            setPageNumber(6)
-        } else {
+        dispatch(nextPage()); 
         setPageNumber(page+1);
-        }
     }
 
     const handlePreviousPage = () => {
         dispatch(previousPage());
-        if(page === 6) {
-            setPageNumber(4)
-        } else {
         setPageNumber(page-1)
-        }
     }
 
     return (
