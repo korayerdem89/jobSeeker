@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
-const useFetch = (url) => {
+const useFetch = (url, pageNumber) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
- 
+    const [error, setError] = useState(null); 
+   
     const fetchData = async () => {
         try {
             const { data: responseData } = await axios.get(url);
@@ -17,10 +18,17 @@ const useFetch = (url) => {
 
         }
     };
-
+console.log(`useEffect ${pageNumber}`);
+if (pageNumber) {
+    useEffect(() => {
+        fetchData();
+    }, [pageNumber]);
+} else {
     useEffect(() => {
         fetchData();
     }, []);
+}
+
     return {data, loading, error};
 }
 
