@@ -7,10 +7,10 @@ import JobsCard from '../../Components/JobsCard/JobsCard';
 import Button from '../../Components/Button/Button';
 import { useDispatch } from 'react-redux';
 const Jobs = ({ navigation }) => {
-    const [pageNumber, setPageNumber] = useState(1);
+    const [pageNumber, setPageNumber] = useState(20);
 
     const { data, loading, error } = useFetch(`${config.API_URL}?page=${pageNumber}`, pageNumber); 
-    
+
     if (loading) {
         return <ActivityIndicator size="large" />
     }
@@ -28,10 +28,13 @@ const Jobs = ({ navigation }) => {
     )
 
     const handleNextPage = () => {
+        if (pageNumber === 90) {
+            setPageNumber(0);
+        }
         setPageNumber(pageNumber + 1);
     }
     const handlePreviousPage = () => {
-        setPageNumber(pageNumber - 1) 
+        setPageNumber(pageNumber - 1)  //page = 0 'da geri butonunu kaldırdığım için koşul atamama gerek kalmadı
     }
 
     return (
