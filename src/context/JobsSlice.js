@@ -5,7 +5,6 @@ export const jobsSlice = createSlice({
   initialState: {
     favoritedJobs: [],
     submittedJobs: [],
-    pageNumber: 38,
   },
   reducers: {
     addFavorite: (state, action) => {
@@ -25,20 +24,6 @@ export const jobsSlice = createSlice({
       const newArr = state.favoritedJobs.filter(item => item.id !== id);
       return { ...state, favoritedJobs: newArr }
     },
-    nextPage: (state, action) => {
-      let increasePage;
-      if (state.pageNumber === 89) {
-        increasePage = 0;
-      } else {
-        increasePage = state.pageNumber + 1;
-      }
-      return { ...state, pageNumber: increasePage };
-    },
-    previousPage: (state, action) => {
-      let decreasePage = state.pageNumber - 1; //sayfa 0'a gelince geri tuşunu kaldırdığımdan, nextPage'de olduğu gibi koşul belirtmeme gerek yok"
-      return { ...state, pageNumber: decreasePage };
-    },
-
   }
 });
 

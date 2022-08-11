@@ -23,6 +23,7 @@ if (pageNumber) {
     useEffect(() => {
         fetchData();
     }, [pageNumber]);
+    
 } else {
     useEffect(() => {
         fetchData();
