@@ -11,7 +11,7 @@ import { Provider } from 'react-redux'
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
-const JobsScreen = () => {
+const JobsScreen = ({route}) => {
   return (
     <Stack.Navigator
       screenOptions={() => ({
@@ -34,7 +34,9 @@ const JobsScreen = () => {
 };
 
 
-const App = () => {
+const App = ({route}) => {
+  const {name} = route.params;
+  console.log(name);
   return (
     <Provider store={store}>
       <NavigationContainer>

@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { SafeAreaView, Text, ActivityIndicator, FlatList, View, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, Text, ActivityIndicator, FlatList, View } from 'react-native';
 import styles from './Jobs.style';
 import config from "../../../config";
 import useFetch from "../../hooks/useFetch/useFetch";
 import JobsCard from '../../Components/JobsCard/JobsCard';
 import Button from '../../Components/Button/Button';
-import { useDispatch } from 'react-redux';
 const Jobs = ({ navigation }) => {
     const [pageNumber, setPageNumber] = useState(20);
 
